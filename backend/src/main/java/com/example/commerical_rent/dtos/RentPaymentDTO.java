@@ -1,64 +1,37 @@
-package com.example.commerical_rent.entity;
+package com.example.commerical_rent.dtos;
 
-import jakarta.persistence.*;
+import com.example.commerical_rent.enums.PaymentStatus;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.example.commerical_rent.enums.PaymentStatus;
-
-@Entity
-@Table(name = "rent_payments")
-public class RentPayment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RentPaymentDTO {
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lease_agreement_id", nullable = false)
-    private LeaseAgreement leaseAgreement;
-
-    @Column(name = "amount", nullable = false)
+    private Long leaseAgreementId; // Reference to LeaseAgreement ID
     private BigDecimal amount;
-
-    @Column(name = "payment_month", nullable = false)
     private LocalDate paymentMonth;
-
-    @Column(name = "payment_date")
     private LocalDate paymentDate;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status", nullable = false)
     private PaymentStatus paymentStatus;
-
-    @Column(name = "penalty_amount")
     private BigDecimal penaltyAmount;
-
-    @Column(name = "reference_id", unique = true)
     private String referenceId;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
+    
+    public RentPaymentDTO() {
     }
 
-    
-
-    
-    public RentPayment() {
-    }
-
-    public RentPayment(LeaseAgreement leaseAgreement, BigDecimal amount, LocalDate paymentMonth,
-            PaymentStatus paymentStatus) {
-        this.leaseAgreement = leaseAgreement;
+    public RentPaymentDTO(Long id, Long leaseAgreementId, BigDecimal amount, LocalDate paymentMonth,
+                          LocalDate paymentDate, PaymentStatus paymentStatus, BigDecimal penaltyAmount,
+                          String referenceId, LocalDateTime createdAt) {
+        this.id = id;
+        this.leaseAgreementId = leaseAgreementId;
         this.amount = amount;
         this.paymentMonth = paymentMonth;
+        this.paymentDate = paymentDate;
         this.paymentStatus = paymentStatus;
-        this.penaltyAmount = BigDecimal.ZERO;
+        this.penaltyAmount = penaltyAmount;
+        this.referenceId = referenceId;
+        this.createdAt = createdAt;
     }
 
     
@@ -70,12 +43,12 @@ public class RentPayment {
         this.id = id;
     }
 
-    public LeaseAgreement getLeaseAgreement() {
-        return leaseAgreement;
+    public Long getLeaseAgreementId() {
+        return leaseAgreementId;
     }
 
-    public void setLeaseAgreement(LeaseAgreement leaseAgreement) {
-        this.leaseAgreement = leaseAgreement;
+    public void setLeaseAgreementId(Long leaseAgreementId) {
+        this.leaseAgreementId = leaseAgreementId;
     }
 
     public BigDecimal getAmount() {
