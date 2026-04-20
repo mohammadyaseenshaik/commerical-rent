@@ -1,4 +1,4 @@
-package com.example.commerical_rent.controller;
+package com.example.commerical_rent.controllers;
 
 import com.example.commerical_rent.entity.User;
 import com.example.commerical_rent.enums.Role;
