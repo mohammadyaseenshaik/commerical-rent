@@ -2,7 +2,8 @@ package com.example.commerical_rent.controllers;
 
 import com.example.commerical_rent.entity.User;
 import com.example.commerical_rent.enums.Role;
-import com.example.commerical_rent.service.UserService;
+import com.example.commerical_rent.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
