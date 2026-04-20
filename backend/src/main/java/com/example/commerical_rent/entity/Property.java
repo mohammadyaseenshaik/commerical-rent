@@ -44,6 +44,13 @@ public class Property {
     public Property() {
     }
 
+    public enum PropertyStatus {
+        AVAILABLE,
+        LEASED,
+        UNDER_MAINTENANCE,
+        INACTIVE
+    }
+
     public Property(String propertyName, String location, String propertyType,
             BigDecimal monthlyRentAmount, User owner, PropertyStatus availabilityStatus) {
         this.propertyName = propertyName;
