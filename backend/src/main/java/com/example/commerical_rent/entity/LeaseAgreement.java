@@ -3,6 +3,8 @@ package com.example.commerical_rent.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.example.commerical_rent.enums.LeaseStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
