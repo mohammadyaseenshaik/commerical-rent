@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+//Property.java
 @Entity
 @Table(name = "properties")
 public class Property {
