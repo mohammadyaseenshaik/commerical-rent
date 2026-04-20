@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.example.commerical_rent.enums.PaymentStatus;
+
 @Entity
 @Table(name = "rent_payments")
 public class RentPayment {
@@ -44,12 +46,7 @@ public class RentPayment {
         createdAt = LocalDateTime.now();
     }
 
-    public enum PaymentStatus {
-        INITIATED,
-        PAID,
-        FAILED,
-        OVERDUE
-    }
+    
 
     // Constructors
     public RentPayment() {

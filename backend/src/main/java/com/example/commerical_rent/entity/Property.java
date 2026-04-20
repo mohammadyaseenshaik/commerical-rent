@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.example.commerical_rent.enums.PropertyStatus;
+
 //Property.java
 @Entity
 @Table(name = "properties")
@@ -42,13 +44,6 @@ public class Property {
     }
 
     public Property() {
-    }
-
-    public enum PropertyStatus {
-        AVAILABLE,
-        LEASED,
-        UNDER_MAINTENANCE,
-        INACTIVE
     }
 
     public Property(String propertyName, String location, String propertyType,
