@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Paper, Card, CardContent, Chip, Button, CircularProgress, Alert } from '@mui/material';
 import { Receipt, CheckCircle, AttachMoney, CreditCard } from '@mui/icons-material';
-import { StatCard } from '../../components/StatCard';
+import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { useAuth } from '../../context/AuthContext';
 
 export const TenantDashboard: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState({
     activeLeases: 0,
     totalPaid: 0,
@@ -126,7 +127,12 @@ export const TenantDashboard: React.FC = () => {
         ) : leases.length === 0 ? (
           <Paper elevation={0} sx={{ p: 4, textAlign: 'center', border: '1px dashed var(--border)', borderRadius: 'var(--radius-lg)' }}>
             <Typography color="text.secondary" sx={{ mb: 2 }}>No active leases yet</Typography>
-            <Button variant="contained">Browse Properties</Button>
+            <Button 
+              variant="contained"
+              onClick={() => navigate('/tenant/browse')}
+            >
+              Browse Properties
+            </Button>
           </Paper>
         ) : (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

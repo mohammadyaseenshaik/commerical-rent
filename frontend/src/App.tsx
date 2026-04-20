@@ -22,7 +22,6 @@ import {
   TenantBrowse,
   TenantPayments,
   LeaseManagerDashboard,
-  DisputeManagerDashboard,
   AdminLeases,
   AdminDisputes,
 } from "./pages/Dashboards";
@@ -30,6 +29,9 @@ import { LeaseApprovals } from "./pages/manager/LeaseApprovals";
 import { LeaseAnalytics } from "./pages/manager/LeaseAnalytics";
 import { ActiveLeases } from "./pages/manager/ActiveLeases";
 import { LeaseDetails } from "./pages/manager/LeaseDetails";
+import { DisputeDashboard } from "./pages/manager/DisputeDashboard";
+import { PendingDisputes } from "./pages/manager/PendingDisputes";
+import { ResolvedDisputes } from "./pages/manager/ResolvedDisputes";
 
 const theme = createTheme({
   typography: {
@@ -117,7 +119,15 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute allowedRoles={["DISPUTE_MANAGER"]} />}>
           <Route
             path="/manager/disputes"
-            element={<DisputeManagerDashboard />}
+            element={<DisputeDashboard />}
+          />
+          <Route
+            path="/manager/pending"
+            element={<PendingDisputes />}
+          />
+          <Route
+            path="/manager/resolved"
+            element={<ResolvedDisputes />}
           />
         </Route>
       </Route>

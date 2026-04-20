@@ -54,12 +54,13 @@ export const TenantBrowse: React.FC = () => {
     setSubmitting(true);
     try {
       const payload = {
-        propertyId: selectedProperty.id,
-        tenantId: user.id,
+        property: selectedProperty.propertyName,
+        tenant: user.email,
         leaseStartDate: data.leaseStartDate,
         leaseEndDate: data.leaseEndDate,
         monthlyRentAmount: selectedProperty.monthlyRentAmount,
         securityDeposit: data.securityDeposit,
+        approvedBy: "PENDING",
         leaseStatus: 'REQUESTED'
       };
       

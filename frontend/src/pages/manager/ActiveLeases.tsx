@@ -20,7 +20,7 @@ import {
   TextField,
   Alert,
 } from "@mui/material";
-import { Edit, Close, Info, CheckCircle, Calendar } from "@mui/icons-material";
+import { Edit, Close, Info, DateRange } from "@mui/icons-material";
 import api from "../../utils/api";
 import { toast } from "react-toastify";
 
@@ -166,7 +166,7 @@ export const ActiveLeases: React.FC = () => {
 
           {leases.some((l) => getRemainingDays(l.leaseEndDate) <= 30) && (
             <Alert severity="warning" sx={{ mt: 3, display: "flex", alignItems: "center", gap: 1 }}>
-              <Calendar sx={{ fontSize: "1.25rem" }} />
+              <DateRange sx={{ fontSize: "1.25rem" }} />
               <Box>
                 <strong>Attention:</strong> {leases.filter((l) => getRemainingDays(l.leaseEndDate) <= 30).length} lease(s) expiring within 30 days
               </Box>

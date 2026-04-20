@@ -4,11 +4,13 @@ import {
   Chip, CircularProgress, Alert
 } from '@mui/material';
 import { Add, TrendingUp, AttachMoney, Warning } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { useAuth } from '../../context/AuthContext';
 
 export const OwnerDashboard: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState({
     totalProperties: 0,
     activeLeases: 0,
@@ -78,7 +80,11 @@ export const OwnerDashboard: React.FC = () => {
             Manage your commercial properties and track performance
           </Typography>
         </Box>
-        <Button variant="contained" startIcon={<Add />}>
+        <Button 
+          variant="contained" 
+          startIcon={<Add />}
+          onClick={() => navigate('/owner/properties')}
+        >
           Add Property
         </Button>
       </Box>
@@ -146,7 +152,13 @@ export const OwnerDashboard: React.FC = () => {
         ) : properties.length === 0 ? (
           <Paper elevation={0} sx={{ p: 4, textAlign: 'center', border: '1px dashed var(--border)', borderRadius: 'var(--radius-lg)' }}>
             <Typography color="text.secondary" sx={{ mb: 2 }}>No properties listed yet</Typography>
-            <Button variant="contained" startIcon={<Add />}>List Your First Property</Button>
+            <Button 
+              variant="contained" 
+              startIcon={<Add />}
+              onClick={() => navigate('/owner/properties')}
+            >
+              List Your First Property
+            </Button>
           </Paper>
         ) : (
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' }, gap: 2 }}>
